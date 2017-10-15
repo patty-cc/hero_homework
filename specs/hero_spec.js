@@ -1,16 +1,26 @@
 var assert = require('assert');
 var Hero = require('../hero.js');
 var Food = require('../food.js');
+var Task = require('../task.js');
 
 describe('Hero', function() {
 
 var hero;
-var food;
+var foodA;
+var foodB;
+var taskA;
+var taskB;
+
 
   beforeEach( function() {
-    hero = new Hero( 'Link', 100, 'Apple');
-    foodA = new Food( 'Chocolate');
-    foodB = new Food( 'Crisps');
+    hero = new Hero( 'Link', 100, 'Apple' );
+
+    foodA = new Food( 'Chocolate' );
+    foodB = new Food( 'Crisps' );
+
+    taskA = new Task( 3, 4, 150 );
+    taskB = new Task( 5, 1, 250 );
+    taskC = new Task( 4, 3, 100 );
   });
 
   it('should have a name', function() {
@@ -35,7 +45,7 @@ var food;
 
   it('should replenish energy when eating food', function() {
     var newHero = new Hero( 'Solid Snake', 80, 'Crisps');
-    newHero.eatFood( foodA);
+    newHero.eatFood( foodA );
     assert.strictEqual(newHero.healthValue, 90);
   });
 
@@ -43,5 +53,19 @@ var food;
     var newHero = new Hero('Solid Snake', 85, 'Crisps');
     newHero.eatFood( foodB );
     assert.strictEqual(newHero.healthValue, 100);
+  });
+
+  it('should be able to add a task to tasks', function() {
+    hero.addTask( taskA );
+    hero.addTask( taskB );
+    assert.strictEqual( hero.tasks.length, 2 );
+  });
+
+  it('should be able to sort tasks by urgency', function() {
+    hero.addTask( taskA );
+    hero.addTask( taskB );
+    hero.addTask( taskC );
+    hero.sortUrgency();
+    assert.deepEqual(hero.tasks, [ taskB, taskC, taskA ]);
   });
 })

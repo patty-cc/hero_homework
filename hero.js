@@ -13,6 +13,16 @@ var Hero = function(name, healthValue, favouriteFood ){
     }
     return this.healthValue += food.replenValue;
   };
+
+  Hero.prototype.addTask = function ( task ) {
+    this.tasks.push(task);
+  };
+
+  Hero.prototype.sortUrgency = function(  ) {
+    this.tasks.sort(function( a, b ) {
+      return a.urgencyRating - b.urgencyRating;
+    });
+  }
 };
 
 module.exports = Hero;
