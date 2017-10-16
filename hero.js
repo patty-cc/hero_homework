@@ -23,6 +23,14 @@ var Hero = function(name, healthValue, favouriteFood ){
       return a.urgencyRating - b.urgencyRating;
     });
   }
+
+  Hero.prototype.taskStatus = function(task) {
+    var completedTasks = [];
+    if( this.completed === true )
+    completedTasks.push(task)
+  }
+
+
 };
 
 module.exports = Hero;

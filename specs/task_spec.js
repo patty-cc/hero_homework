@@ -6,7 +6,7 @@ describe( 'Task', function() {
   var task;
 
   beforeEach( function() {
-    task = new Task( 2, 5, 300);
+    task = new Task( 2, 5, 300, true);
   });
 
   it('should have a difficulty level', function() {
@@ -22,6 +22,6 @@ describe( 'Task', function() {
   });
 
   it('should have a status if completed', function() {
-    assert.strictEqual( task.completed, false);
+    assert.strictEqual( task.completed, true);
   });
 })
