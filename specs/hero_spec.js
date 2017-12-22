@@ -20,6 +20,10 @@ var taskC;
     foodB = new Food( 'Crisps' );
 
     taskA = new Task( 3, 4, 150, true );
+    new Person("Alex", 1.80)
+
+    var params =
+    new Task({difficultyLevel: 0, urgencyRating:1 });
     taskB = new Task( 5, 1, 250, false );
     taskC = new Task( 4, 3, 100, true );
   });
@@ -69,6 +73,8 @@ var taskC;
     hero.sortUrgency();
     assert.deepEqual( hero.tasks, [ taskB, taskC, taskA ] );
   });
+
+  hero.getIn
 
 
 })
